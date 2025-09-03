@@ -126,13 +126,39 @@ true
 
 > C
 
+ภาษา C ไม่มี `map`, `Symbol`, `boolean` ดังนั้น
+
 ```c
 #include <stdio.h>
+#include <string.h>
+
+int is_equal(int *array1, int *array2) {
+	int arr1_size = sizeof(array1) / sizeof(array1[0]);
+	int arr2_size = sizeof(array2) / sizeof(array2[0]);
+  
+	if (arr1_size != arr2_size) {
+		return -1;
+	}
+
+	for (int i = 0; i < arr1_size; i++) {
+		if (array1[i] != array2[i]) {
+			return -1;
+                }
+	}
+	return 1;
+}
 
 int main() {
-	int x = 6;
-        printf("%d\n", x == 6);
-	printf("%d\n", x == -6);
+	int x[] = {1, 2, 3, 4};
+        int y[] = {5, 6, 7, 8};
+	
+	printf("%d\n", 10 == 10);
+	printf("%d\n", 5 == 9 / 2.0);
+	printf("%d\n", strcmp("hello", "hello") == 0);
+        printf("%d\n", is_equal(x, x));
+	printf("%d\n", is_equal(x, y));
+	printf("%d\n", 1 == 1);
+	printf("%d\n", NULL == NULL);
 	return 0;
 }
 ```
@@ -142,40 +168,83 @@ int main() {
 ```
 1
 0
+1
+1
+-1
+1
+1
 ```
 
-ที่ได้ผลลัพธ์เป็น 1 กับ 0 ในภาษา C เพราะว่าภาษา C ไม่มี `boolean` แต่จะถือว่า 0 เป็นค่าตรรกะเท็จ และค่าอื่น ๆ ที่ไม่ใช่ 0 จะเป็นจริงทั้งหมด&#x20;
+ที่ได้ผลลัพธ์เป็น 1 กับ 0 ในภาษา C เพราะว่าภาษา C ไม่มี `boolean` แต่จะถือว่า 0 เป็นค่าตรรกะเท็จ และค่าอื่น ๆ ที่ไม่ใช่ 0 จะเป็นจริงทั้งหมด
 
 > Python
 
 ```python
-x = 4
-y = 5
-
-print(x == y)
-print(x == 4)
+print(10 == 10)
+print(5 == 9 / 2.0)
+print("hello" == "hello")
+print([1, "a", True] == [1, "a", True])
+h1 = {"name": "Alice", "role": "admin"}
+h2 = {"role": "admin", "name": "Alice"}
+print(h1 == h2)
+print("hello" == "world")
+print(True == True)
+print(None == None)
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
+True
 False
+True
+True
+True
+False
+True
 True
 ```
 
 > Java
 
 ```java
-class main {
-	public static void main(String[] args) {
-		System.out.println(4 == 4);
-	}
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class main {
+    public static void main(String[] args) {
+        System.out.println(10 == 10);
+        System.out.println(5 == 9 / 2.0);
+        System.out.println("hello".equals("hello"));
+        List<Object> list1 = Arrays.asList(1, "a", true);
+        List<Object> list2 = Arrays.asList(1, "a", true);
+        System.out.println(list1.equals(list2));
+        Map<String, String> h1 = new HashMap<>();
+        h1.put("name", "Alice");
+        h1.put("role", "admin");
+        Map<String, String> h2 = new HashMap<>();
+        h2.put("role", "admin");
+        h2.put("name", "Alice");
+        System.out.println(h1.equals(h2));
+        System.out.println("hello".equals("world"));
+        System.out.println(true == true);
+        System.out.println(null == null);
+    }
 }
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
+true
+false
+true
+true
+true
+false
+true
 true
 ```
 
@@ -273,13 +342,18 @@ false
 
 ```c
 #include <stdio.h>
+#include <string.h>
 
 int main() {
-	int x = 6;
-        printf("%d\n", x != 6);
-	printf("%d\n", x != -6);
+	printf("%d\n", 10 != 10);
+	printf("%d\n", 5 != 9 / 2.0);
+	printf("%d\n", strcmp("hello", "hello") != 0);
+	printf("%d\n", strcmp("hello", "world") != 0);
+	printf("%d\n", 1 != 1);
+	printf("%d\n", NULL != NULL);
 	return 0;
 }
+
 ```
 
 จะได้ผลลัพธ์เป็น
@@ -287,31 +361,66 @@ int main() {
 ```
 0
 1
+0
+1
+0
+0
 ```
 
 > Python
 
 ```python
-x = 4
-y = 5
-
-print(x != y)
-print(x != 4)
+print(10 != 10)
+print(5 != 9 / 2.0)
+print("hello" != "hello")
+print([1, "a", True] != [1, "a", True])
+h1 = {"name": "Alice", "role": "admin"}
+h2 = {"role": "admin", "name": "Alice"}
+print(h1 != h2)
+print("hello" != "world")
+print(True != True)
+print(None != None)
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
+False
 True
+False
+False
+False
+True
+False
 False
 ```
 
 > Java
 
 ```java
-class main {
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class EqualityChecks {
 	public static void main(String[] args) {
-		System.out.println(4 != 4);
+		System.out.println(10 != 10);
+		System.out.println(5 != 9 / 2.0);
+		System.out.println(!"hello".equals("hello"));
+		List<Object> list1 = Arrays.asList(1, "a", true);
+		List<Object> list2 = Arrays.asList(1, "a", true);
+		System.out.println(!list1.equals(list2));
+		Map<String, String> h1 = new HashMap<>();
+		h1.put("name", "Alice");
+		h1.put("role", "admin");
+		Map<String, String> h2 = new HashMap<>();
+		h2.put("role", "admin");
+		h2.put("name", "Alice");
+		System.out.println(!h1.equals(h2));
+		System.out.println(!"hello".equals("world"));
+		System.out.println(true != true);
+		System.out.println(null != null);
 	}
 }
 ```
@@ -319,6 +428,13 @@ class main {
 จะได้ผลลัพธ์เป็น
 
 ```
+false
+true
+false
+false
+false
+true
+false
 false
 ```
 
@@ -475,48 +591,161 @@ false
 
 ในผลลัพธ์บรรทัดที่ 1-3 เป็นผลลัพธ์จากการเปรียบเทียบว่าค่าใดมากกว่า
 
-ในผลลัพธ์บรรทัดที่ 4-6 เป็นผลลัพธ์จากการเปรียบเทียบลำดับ ascii ของตัวอักษรแต่ละตัว โดยเริ่มที่ตัวแรกแล้วไปเรื่อย ๆ จนกว่าจะเจอตัวอักษรตัวที่แตกต่าง จึงจะคืนค่าตรรกะแล้วหยุดทำงาน
+ในผลลัพธ์บรรทัดที่ 4-6 เป็นผลลัพธ์จากการเปรียบเทียบลำดับ ASCII ของตัวอักษรแต่ละตัว โดยเริ่มที่ตัวแรกแล้วไปเรื่อย ๆ จนกว่าจะเจอตัวอักษรตัวที่แตกต่าง จึงจะคืนค่าตรรกะแล้วหยุดทำงาน
 
 ในผลลัพธ์บรรทัดที่ 7-8 เป็นผลลัพธ์จากการเปรียบเทียบวัน เวลา
 
-ในผลลัพธ์บรรทัดที่ 9-10 เป็นผลลัพธ์จากการเปรียบเทียบจากการเปรียบเทียบลำดับ ascii ของตัวอักษรใน Symbol แต่ละตัว โดยหลักการทำงานคล้ายกับการเปรียบเทียบข้อความ
+ในผลลัพธ์บรรทัดที่ 9-10 เป็นผลลัพธ์จากการเปรียบเทียบจากการเปรียบเทียบลำดับ ASCII ของตัวอักษรใน Symbol แต่ละตัว โดยหลักการทำงานคล้ายกับการเปรียบเทียบข้อความ
 
 #### เทียบกับภาษาอื่น ๆ&#x20;
 
 > C
 
 ```c
-// Some code
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+
+int main() {
+	printf("%d\n", 5 < 10);
+	printf("%d\n", 3.14 < 3.141);
+	printf("%d\n", 100 < 99);
+
+	printf("%d\n", strcmp("apple", "banana") < 0);
+	printf("%d\n", strcmp("ruby", "rubies") < 0);
+	printf("%d\n", strcmp("Zebra", "apple") < 0);
+    
+	struct tm time_info_1 = {0};
+	time_info_1.tm_year = 2025 - 1900;
+	time_info_1.tm_mon = 9 - 1;
+	time_info_1.tm_mday = 3;
+	time_info_1.tm_hour = 10;
+	time_t t1 = mktime(&time_info_1);
+	time_t t2 = t1 + 3600;
+	printf("%d\n", difftime(t1, t2) < 0);
+
+	struct tm date_info_1 = {0};
+	date_info_1.tm_year = 2025 - 1900;
+	date_info_1.tm_mon = 1 - 1;
+	date_info_1.tm_mday = 1;
+	time_t d1 = mktime(&date_info_1);
+    
+	struct tm date_info_2 = {0};
+	date_info_2.tm_year = 2024 - 1900;
+	date_info_2.tm_mon = 1 - 1;
+	date_info_2.tm_mday = 1;
+	time_t d2 = mktime(&date_info_2);
+	printf("%d\n", difftime(d1, d2) < 0);
+
+	printf("%d\n", strcmp("alpha", "beta") < 0);
+	printf("%d\n", strcmp("zulu", "yankee") < 0);
+
+	return 0;
+}
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+1
+1
+0
+1
+0
+1
+1
+0
+1
+0
 ```
 
 > Python
 
 ```python
-// Some code
+import datetime
+
+print(5 < 10)
+print(3.14 < 3.141)
+print(100 < 99)
+
+print("apple" < "banana")
+print("ruby" < "rubies")
+print("Zebra" < "apple")
+
+tz = datetime.timezone(datetime.timedelta(hours=7))
+t1 = datetime.datetime(2025, 9, 3, 10, 0, 0, tzinfo=tz)
+t2 = t1 + datetime.timedelta(hours=1)
+print(t1 < t2)
+
+d1 = datetime.date(2025, 1, 1)
+d2 = datetime.date(2024, 1, 1)
+print(d1 < d2)
+
+print("alpha" < "beta")
+print("zulu" < "yankee")
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+True
+True
+False
+True
+False
+True
+True
+False
+True
+False
 ```
 
 > Java
 
 ```java
-// Some code
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
+public class EqualityChecks {
+	public static void main(String[] args) {
+		System.out.println(5 < 10);
+		System.out.println(3.14 < 3.141);
+		System.out.println(100 < 99);
+
+		System.out.println("apple".compareTo("banana") < 0);
+		System.out.println("ruby".compareTo("rubies") < 0);
+		System.out.println("Zebra".compareTo("apple") < 0);
+
+		ZoneId bangkokZone = ZoneId.of("Asia/Bangkok");
+		ZonedDateTime t1 = ZonedDateTime.of(2025, 9, 3, 10, 0, 0, 0, bangkokZone);
+		ZonedDateTime t2 = t1.plusHours(1);
+		System.out.println(t1.isBefore(t2));
+
+		LocalDate d1 = LocalDate.of(2025, 1, 1);
+		LocalDate d2 = LocalDate.of(2024, 1, 1);
+		System.out.println(d1.isBefore(d2));
+
+		System.out.println("alpha".compareTo("beta") < 0);
+		System.out.println("zulu".compareTo("yankee") < 0);
+	}
+}
+
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+true
+true
+false
+true
+false
+true
+true
+false
+true
+false
 ```
 
 ## ตัวดำเนินการ <=>
@@ -573,37 +802,171 @@ puts :zulu <=> :yankee
 > C
 
 ```c
-// Some code
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+
+int normalize_comparison(int result) {
+	if (result < 0) return -1;
+	if (result > 0) return 1;
+	return 0;
+}
+
+int compare_double(double a, double b) {
+	if (a < b) return -1;
+	if (a > b) return 1;
+	return 0;
+}
+
+int main() {
+	printf("%d\n", compare_double(5, 10));
+	printf("%d\n", compare_double(3.14, 3.141));
+	printf("%d\n", compare_double(100, 99));
+	printf("%d\n", compare_double(10, 10));
+    
+	printf("%d\n", normalize_comparison(strcmp("apple", "banana")));
+	printf("%d\n", normalize_comparison(strcmp("ruby", "rubies")));
+	printf("%d\n", normalize_comparison(strcmp("Zebra", "apple")));
+    
+	struct tm time_info_1 = {0};
+	time_info_1.tm_year = 2025 - 1900;
+	time_info_1.tm_mon = 8;
+	time_info_1.tm_mday = 3;
+	time_info_1.tm_hour = 10;
+	time_t t1 = mktime(&time_info_1);
+	time_t t2 = t1 + 3600;
+	printf("%d\n", compare_double(difftime(t1, t2), 0.0));
+
+	struct tm date_info_1 = {0};
+	date_info_1.tm_year = 2025 - 1900;
+	time_t d1 = mktime(&date_info_1);
+    
+	struct tm date_info_2 = {0};
+	date_info_2.tm_year = 2024 - 1900;
+	time_t d2 = mktime(&date_info_2);
+	printf("%d\n", compare_double(difftime(d1, d2), 0.0));
+
+	printf("%d\n", normalize_comparison(strcmp("alpha", "beta")));
+	printf("%d\n", normalize_comparison(strcmp("zulu", "yankee")));
+
+	return 0;
+}
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+-1
+-1
+1
+0
+-1
+1
+-1
+-1
+1
+-1
+1
 ```
 
 > Python
 
 ```python
-// Some code
+import datetime
+
+def spaceship_compare(a, b):
+    if a < b:
+        return -1
+    elif a > b:
+        return 1
+    else:
+        return 0
+
+print(spaceship_compare(5, 10))
+print(spaceship_compare(3.14, 3.141))
+print(spaceship_compare(100, 99))
+print(spaceship_compare(10, 10))
+
+print(spaceship_compare("apple", "banana"))
+print(spaceship_compare("ruby", "rubies"))
+print(spaceship_compare("Zebra", "apple"))
+
+tz = datetime.timezone(datetime.timedelta(hours=7))
+t1 = datetime.datetime(2025, 9, 3, 10, 0, 0, tzinfo=tz)
+t2 = t1 + datetime.timedelta(hours=1)
+print(spaceship_compare(t1, t2))
+
+d1 = datetime.date(2025, 1, 1)
+d2 = datetime.date(2024, 1, 1)
+print(spaceship_compare(d1, d2))
+
+print(spaceship_compare("alpha", "beta"))
+print(spaceship_compare("zulu", "yankee"))
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+-1
+-1
+1
+0
+-1
+1
+-1
+-1
+1
+-1
+1
 ```
 
 > Java
 
 ```java
-// Some code
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
+public class ComparisonChecks {
+	public static void main(String[] args) {
+		System.out.println(Integer.compare(5, 10));
+		System.out.println(Double.compare(3.14, 3.141));
+		System.out.println(Integer.compare(100, 99));
+		System.out.println(Integer.compare(10, 10));
+
+		System.out.println("apple".compareTo("banana"));
+		System.out.println("ruby".compareTo("rubies"));
+		System.out.println("Zebra".compareTo("apple"));
+
+		ZoneId bangkokZone = ZoneId.of("Asia/Bangkok");
+		ZonedDateTime t1 = ZonedDateTime.of(2025, 9, 3, 10, 0, 0, 0, bangkokZone);
+		ZonedDateTime t2 = t1.plusHours(1);
+		System.out.println(t1.compareTo(t2));
+
+		LocalDate d1 = LocalDate.of(2025, 1, 1);
+		LocalDate d2 = LocalDate.of(2024, 1, 1);
+		System.out.println(d1.compareTo(d2));
+
+		System.out.println("alpha".compareTo("beta"));
+		System.out.println("zulu".compareTo("yankee"));
+	}
+}
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+-1
+-1
+1
+0
+-1
+16
+-7
+-1
+1
+-1
+1
 ```
 
 ## ตัวดำเนินการ ===
@@ -611,9 +974,9 @@ puts :zulu <=> :yankee
 ### 1. ตรวจสอบว่า มีค่าใน `Range` หรือไม่
 
 ```ruby
-puts (1..10) === 5      #=> true
-puts (1..10) === 15     #=> false
-puts ('a'..'f') === 'c'  #=> true
+puts (1..10) === 5
+puts (1..10) === 15
+puts ('a'..'f') === 'c'
 ```
 
 จะได้ผลลัพธ์เป็น
@@ -629,44 +992,65 @@ true
 > C
 
 ```c
-// Some code
+#include <stdio.h>
+
+int main() {
+	printf("%d\n", 5 >= 1 && 5 <= 10);
+	printf("%d\n", 15 >= 1 && 15 <= 10);
+	printf("%d\n", 'c' >= 'a' && 'c' <= 'f');
+	return 0;
+}
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+1
+0
+1
 ```
 
 > Python
 
 ```python
-// Some code
+print(1 <= 5 <= 10)
+print(1 <= 15 <= 10)
+print('a' <= 'c' <= 'f')
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+True
+False
+True
 ```
 
 > Java
 
-```
-// Some code
+```java
+public class ComparisonChecks {
+	public static void main(String[] args) {
+		System.out.println(5 >= 1 && 5 <= 10);
+		System.out.println(15 >= 1 && 15 <= 10);
+		System.out.println('c' >= 'a' && 'c' <= 'f');
+	}
+}
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+true
+false
+true
 ```
 
 ### 2. ตรวจสอบว่า `Object` นั้นเป็นของ `class` นั้นหรือไม่
 
-<pre class="language-ruby"><code class="lang-ruby"><strong>puts String === "hello"     #=> true
-</strong>puts Numeric === 123.45     #=> true (Float is a subclass of Numeric)
-puts Integer === 123.45     #=> false
+<pre class="language-ruby"><code class="lang-ruby"><strong>puts String === "hello"
+</strong>puts Numeric === 123.45
+puts Integer === 123.45
 </code></pre>
 
 จะได้ผลลัพธ์เป็น
@@ -681,46 +1065,52 @@ false
 
 > C
 
-```c
-// Some code
-```
-
-จะได้ผลลัพธ์เป็น
-
-```
-// Some code
-```
+ภาษา C ไม่ได้เป็นภาษาเชิงวัตถุ จึงไม่มีวัตถุให้มาตรวจสอบ
 
 > Python
 
 ```python
-// Some code
+import numbers
+
+print(isinstance("hello", str))
+print(isinstance(123.45, numbers.Number))
+print(isinstance(123.45, int))
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+True
+True
+False
 ```
 
 > Java
 
-```
-// Some code
-```
+<pre class="language-java"><code class="lang-java">public class ComparisonChecks {
+	public static void main(String[] args) {
+		System.out.println("hello" instanceof String);
+		# 
+		System.out.println(Double.valueOf(123.45).getClass().equals(Double.class));
+		System.out.println(Double.valueOf(123.45).getClass().equals(Float.class));
+	}
+<strong>}
+</strong></code></pre>
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+true
+true
+false
 ```
 
 ### 3. ใช้กับการตรวจสอบค่า Regexp
 
 ```ruby
-puts /hello/ === "hello world"  #=> true
-puts /^\d+$/ === "12345"        #=> true
-puts /^\d+$/ === "user123"      #=> false
+puts /hello/ === "hello world"
+puts /^\d+$/ === "12345"
+puts /^\d+$/ === "user123"
 ```
 
 จะได้ผลลัพธ์เป็น
@@ -736,37 +1126,77 @@ false
 > C
 
 ```c
-// Some code
+#include <stdio.h>
+#include <regex.h>
+
+int check_match(const char *pattern, const char *str) {
+	regex_t regex;
+	int result;
+
+	if (regcomp(&regex, pattern, REG_EXTENDED) != 0) {
+		return 0; 
+	}
+
+	result = regexec(&regex, str, 0, NULL, 0);
+	regfree(&regex);
+
+	return result == 0;
+}
+
+int main() {
+	printf("%d\n", check_match("hello", "hello world"));
+	printf("%d\n", check_match("^[0-9]+$", "12345"));
+	printf("%d\n", check_match("^[0-9]+$", "user123"));
+	return 0;
+}
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+1
+1
+0
 ```
 
 > Python
 
 ```python
-// Some code
+import re
+
+print(bool(re.search(r"hello", "hello world")))
+print(bool(re.match(r"^\d+$", "12345")))
+print(bool(re.match(r"^\d+$", "user123")))
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+True
+True
+False
 ```
 
 > Java
 
-```
-// Some code
+```java
+import java.util.regex.Pattern;
+
+public class RegexChecks {
+	public static void main(String[] args) {
+		System.out.println(Pattern.compile("hello").matcher("hello world").find());
+		System.out.println("12345".matches("^\\d+$"));
+		System.out.println("user123".matches("^\\d+$"));
+	}
+}
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+true
+true
+false
 ```
 
 ### 4. เปรียบเทียบค่าปกติ
@@ -774,8 +1204,8 @@ false
 ในกรณีอื่น ๆ ที่ไม่ใช่ 3 ข้อข้างต้น `===` จะทำหน้าที่เหมือน `==`
 
 ```ruby
-puts 42 === 42              #=> true (falls back to 42 == 42)
-puts "abc" === "abc"        #=> true (falls back to "abc" == "abc")
+puts 42 === 42
+puts "abc" === "abc"
 ```
 
 จะได้ผลลัพธ์เป็น
@@ -790,37 +1220,53 @@ true
 > C
 
 ```c
-// Some code
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+	printf("%d\n", 42 == 42);
+	printf("%d\n", strcmp("abc", "abc") == 0);
+	return 0;
+}
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+1
+1
 ```
 
 > Python
 
 ```python
-// Some code
+print(42 == 42)
+print("abc" == "abc")
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+True
+True
 ```
 
 > Java
 
-```
-// Some code
+```java
+public class ComparisonChecks {
+	public static void main(String[] args) {
+		System.out.println(42 == 42);
+		System.out.println("abc".equals("abc"));
+	}
+}
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+true
+true
 ```
 
 ## ตัวดำเนินการ =\~, !\~
@@ -846,35 +1292,129 @@ false
 > C
 
 ```c
-// Some code
+#include <stdio.h>
+#include <regex.h>
+
+void find_and_print_index(const char* text, const char* pattern) {
+	regex_t regex;
+	regmatch_t pmatch[1];
+	int reti;
+
+	reti = regcomp(&regex, pattern, 0);
+	if (reti) {
+		fprintf(stderr, "Could not compile regex\n");
+		return;
+	}
+
+	reti = regexec(&regex, text, 1, pmatch, 0);
+	if (!reti) {
+		// Print the starting offset of the match
+		printf("%lld\n", pmatch[0].rm_so);
+	} else if (reti == REG_NOMATCH) {
+		// -1 to represent nil/not found
+		printf("-1\n");
+	} else {
+		char msgbuf[100];
+		regerror(reti, &regex, msgbuf, sizeof(msgbuf));
+		fprintf(stderr, "Regex match failed: %s\n", msgbuf);
+	}
+	regfree(&regex);
+}
+
+void check_and_print_no_match(const char* text, const char* pattern) {
+	regex_t regex;
+	int reti;
+
+	reti = regcomp(&regex, pattern, 0);
+	if (reti) {
+		fprintf(stderr, "Could not compile regex\n");
+		return;
+	}
+
+	reti = regexec(&regex, text, 0, NULL, 0);
+	if (reti == REG_NOMATCH) {
+		// Match not found, which is true for the !~ operator
+		printf("1\n");
+	} else {
+		// Match found, which is false for the !~ operator
+		printf("0\n");
+	}
+	regfree(&regex);
+}
+
+
+int main() {
+	const char* text = "haystack";
+	const char* pattern = "hay";
+    
+	find_and_print_index(text, pattern);
+    
+	check_and_print_no_match(text, pattern);
+
+	return 0;
+}
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+0
+0
 ```
 
 > Python
 
 ```python
-// Some code
+import re
+
+text = 'haystack'
+pattern = 'hay'
+
+match = re.search(pattern, text)
+if match:
+    print(match.start())
+else:
+    print(None)
+
+print(re.search(pattern, text) is None)
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+0
+False
 ```
 
 > Java
 
 ```java
-// Some code
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RegexMatch {
+	public static void main(String[] args) {
+		String text = "haystack";
+		String regex = "hay";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(text);
+
+		matcher.reset();
+		if (matcher.find()) {
+			System.out.println(matcher.start());
+		} else {
+			System.out.println("-1");
+		}
+		
+		matcher.reset();
+		System.out.println(!matcher.find());
+	}
+}
 ```
 
 จะได้ผลลัพธ์เป็น
 
 ```
-// Some code
+0
+false
 ```
