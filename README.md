@@ -321,3 +321,114 @@ class main {
 ```
 false
 ```
+
+## ตัวดำเนินการ >, >=, <, <=
+
+### 1. ใช้ตรวจสอบว่า c`lass` นั้นได้สืบทอดมาจาก c`lass` อื่นหรือไม่
+
+สำหรับตัวดำเนินการ `>` จะคืนค่าค่าตรรกะจริงถ้า c`lass` ด้านซ้ายเป็น c`lass` แม่ของ c`lass` ทางด้านขวา และคืนค่าตรรกะเท็จถ้า c`lass` ด้านซ้ายเป็น c`lass` ลูกของ c`lass` ทางด้านขวาหรือ c`lass` ทั้งสองเป็น c`lass` เดียวกัน หรือก็คือเราสามารถบอกได้ว่ามันจะคืนค่าตรรกะเท็จเมื่อเป็นกรณีอื่น
+
+ตัวดำเนินการ `<` นั้นจะคืนค่าตรรกะจริงถ้า c`lass` ด้านซ้ายเป็น c`lass` ลูกของ c`lass` ทางด้านขวา และคืนค่าตรรกะเท็จเมื่อเป็นกรณีอื่น
+
+ตัวดำเนินการ `>=` นั้น จะคืนค่าตรรกะจริงถ้า c`lass` ด้านซ้ายเป็น c`lass` แม่ของ c`lass` ทางด้านขวาหรือ c`lass` ทั้งสองเป็น c`lass` เดียวกัน และคืนค่าตรรกะเท็จถ้าเป็นกรณีอื่น
+
+ตัวดำเนินการ <`=` นั้น จะคืนค่าตรรกะจริงถ้า c`lass` ด้านซ้ายเป็น c`lass` ลูกของ c`lass` ทางด้านขวาหรือ c`lass` ทั้งสองเป็น c`lass` เดียวกัน และคืนค่าตรรกะเท็จถ้าเป็นกรณีอื่น
+
+```ruby
+class B                         # ประกาศ class B
+end
+
+class A < B                     # ประกาศ class A โดนเป็นลูกของ class B
+end
+
+puts A > B
+puts A >= B
+puts A < B
+puts A <= B
+puts String >= String
+```
+
+จะได้ผลลัพธ์เป็น
+
+```
+false
+false
+true
+true
+true
+```
+
+ที่ผลลัพธ์บรรทัดที่ 1 และ 2 ได้ค่าเป็น `false` เพราะ A ไม่ใช่ `class` แม่ของ B หรือเป็น `class` เดียวกันกับ B
+
+ที่ผลลัพธ์บรรทัดที่ 3 และ 4 ได้ค่าเป็น `true` เพราะ B เป็น `class` แม่ของ A
+
+ที่ผลลัพธ์บรรทัดที่ 5 ได้ค่าเป็น `true` เพราะเป็น class เดียวกัน
+
+#### เทียบกับภาษาอื่น ๆ&#x20;
+
+> C
+
+ภาษา C ไม่ได้เป็นภาษาเชิงวัตถุ จึงไม่มีคลาสให้มาตรวจสอบ
+
+> Python
+
+```python
+class B:                        # ประกาศ class B
+    def do_thing():
+        print("It in B class")
+
+class A(B):                     # ประกาศ class A โดยเป็น class ลูกของ B
+    def new_thing():
+        print("Hello")
+
+print(issubclass(A, B))
+print(issubclass(B, A))
+```
+
+จะได้ผลลัพธ์เป็น
+
+```
+True
+False
+```
+
+ที่ได้ค่าเป็น `True` ก็เพราะว่า `class` A เป็น `class` ลูก (subclass) ของ B และบรรทัดที่ได้ `False` เพราะ B ไม่ใช่ `class` ลูกของ A แต่เป็น `class` แม่
+
+> Java
+
+```java
+class main {
+	public static void main(String[] args) {
+		System.out.println(A.class.isAssignableFrom(B.class));
+		System.out.println(B.class.isAssignableFrom(A.class));
+		System.out.println(A.class.isAssignableFrom(A.class));
+	}
+}
+
+class B {			// ประกาศ class B
+}
+
+class A extends B {		// ประกาศ class A โดยเป็น class ลูกของ B
+}
+```
+
+จะได้ผลลัพธ์เป็น
+
+```
+false
+true
+true
+```
+
+### 2. ใช้เปรียบเทียบค่า
+
+ในภาษา Ruby ตัวดำเนินการเหล่านี้สามารถเปรียบเทียบได้ทั้งตัวเลขต่าง ๆ (`Numberic`,`Integer`, `Float`, `Rational`) ว่าค่าใดมากกว่าหรือน้อยกว่า
+
+เทียบกับข้อความ ว่าข้อความใดมีตัวอักษรที่เริ่มต้นก่อน
+
+เทียบกับ `Array` ว่า `Array` ใดมีค่าในสมาชิกที่มากกว่ากัน
+
+เทียบกับเวลา (`Time`, `Date`, `DateTime`) ว่าเวลาใดเริ่มต้นก่อนหรือหลัง
+
+เทียบกับ Symbol ว่า Symbol ใดมีตัวอักษรที่เริ่มต้นก่อน
+
