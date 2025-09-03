@@ -86,7 +86,7 @@ class main {
 }
 ```
 
-จะแสดงผลลัพธ์เป็น `false` เนื่องจากเป็นคนละ Object
+จะแสดงผลลัพธ์เป็น `false` เนื่องจากเป็นคนละ `Object`
 
 ### 2. ใช้เปรียบเทียบค่า
 
@@ -116,11 +116,11 @@ true
 true
 ```
 
-ที่แสดงผลลัพธ์เป็น true เพราะว่าทั้งสองค่ามีค่าเท่าทัน
+ที่แสดงผลลัพธ์เป็น `true` เพราะว่าทั้งสองค่ามีค่าเท่าทัน
 
 ที่ผลลัพธ์บรรทัดที่ 2 มีผลลัพธ์เป็น `false` เพราะว่าใน 5 ไม่เท่ากับ 4.5
 
-และที่ผลลัพธ์บรรทัดที่ 6 มีผลลัพธ์เป็น `false` เพราะว่า symbol มีซื่อ symbol ที่ไม่เหมือนกัน
+และที่ผลลัพธ์บรรทัดที่ 6 มีผลลัพธ์เป็น `false` เพราะว่า `symbol` มีซื่อ `symbol` ที่ไม่เหมือนกัน
 
 #### เทียบกับภาษาอื่น ๆ&#x20;
 
@@ -144,4 +144,180 @@ int main() {
 0
 ```
 
-ที่ได้ผลลัพธ์เป็น 1 กับ 0 ในภาษา C เพราะว่าภาษา C ไม่มี boolean แต่จะถือว่า 0 เป็นค่าตรรกะเท็จ และค่าอื่น ๆ ที่ไม่ใช่ 0 จะเป็นจริงทั้งหมด&#x20;
+ที่ได้ผลลัพธ์เป็น 1 กับ 0 ในภาษา C เพราะว่าภาษา C ไม่มี `boolean` แต่จะถือว่า 0 เป็นค่าตรรกะเท็จ และค่าอื่น ๆ ที่ไม่ใช่ 0 จะเป็นจริงทั้งหมด&#x20;
+
+> Python
+
+```python
+x = 4
+y = 5
+
+print(x == y)
+print(x == 4)
+```
+
+จะได้ผลลัพธ์เป็น
+
+```
+False
+True
+```
+
+> Java
+
+```java
+class main {
+	public static void main(String[] args) {
+		System.out.println(4 == 4);
+	}
+}
+```
+
+จะได้ผลลัพธ์เป็น
+
+```
+true
+```
+
+ทั้ง Python และ Java ต่างก็มี `boolean` เป็นของตัวเอง ทำให้ผลลัพธ์ไม่ต่างจาก Ruby มากนัก
+
+## ตัวดำเนินการ !=
+
+### 1. ใช้ตรวจสอบว่าไม่เป็น Object เดียวกัน
+
+#### วิธีใช้งาน
+
+```ruby
+obj = Object.new()
+puts obj != obj
+puts obj != Object.new()
+```
+
+จะได้ผลลัพธ์เป็น
+
+```
+false
+true
+```
+
+ผลลัพธ์ที่ได้จะเป็นการเช็กว่าวัตถุหนึ่งไม่ใช่วัตถุเดียวกันกับอีกวัตถุหนึ่ง หรือพูดได้ว่า `!=` นั้นเป็นนิเสธของ `==` นั่นเอง
+
+#### เทียบกับภาษาอื่น ๆ&#x20;
+
+> C
+
+ภาษา C ไม่ได้เป็นภาษาเชิงวัตถุ จึงไม่มีวัตถุให้มาตรวจสอบ
+
+> Python
+
+```python
+data1 = []
+data2 = []
+data3=data1
+
+if (data1 is not data3):
+    print("True")
+else:
+    print("False")
+```
+
+จะได้ผลลัพธ์เป็น `False`
+
+> Java
+
+```java
+class main {
+	public static void main(String[] args) {
+		Object x = new Object();
+		Object y = new Object();
+		System.out.println(x != y);
+	}
+}
+```
+
+จะได้ผลลัพธ์เป็น `true`
+
+### 2. ใช้เปรียบเทียบค่า
+
+```ruby
+puts 10 != 10                   # เช็ก number
+puts 5 != 9 / 2.0
+puts "hello" != "hello"         # เช็ก String
+puts [1, "a", true] != [1, "a", true] # เช๊ก array
+h1 = { name: "Alice", role: "admin" }
+h2 = { role: "admin", name: "Alice" }
+puts h1 != h2                   # เช็ก hash
+puts :hello != :world           # เช็ก symbol
+puts true != true               # เช็ก boolean
+puts nil != nil                 # เช็กค่า nil ซึ่งมีค่าใน boolean เท่ากับ false 
+```
+
+จะได้ผลลัพธ์เป็น
+
+```
+false
+true
+false
+false
+false
+true
+false
+false
+```
+
+จะเห็นว่า Ruby จะคืนค่า `false` ถ้าค่าทั้งสองเท่ากัน และคืนค่า `true` ถ้าค่าทั้งสองไม่เท่ากัน
+
+#### เทียบกับภาษาอื่น ๆ&#x20;
+
+> C
+
+```c
+#include <stdio.h>
+
+int main() {
+	int x = 6;
+        printf("%d\n", x != 6);
+	printf("%d\n", x != -6);
+	return 0;
+}
+```
+
+จะได้ผลลัพธ์เป็น
+
+```
+0
+1
+```
+
+> Python
+
+```python
+x = 4
+y = 5
+
+print(x != y)
+print(x != 4)
+```
+
+จะได้ผลลัพธ์เป็น
+
+```
+True
+False
+```
+
+> Java
+
+```java
+class main {
+	public static void main(String[] args) {
+		System.out.println(4 != 4);
+	}
+}
+```
+
+จะได้ผลลัพธ์เป็น
+
+```
+false
+```
