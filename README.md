@@ -1478,3 +1478,68 @@ public class RegexMatch {
 0
 false
 ```
+
+## &#x20;แหล่งอ้างอิง
+
+### &#x20;Ruby
+
+#### ตัวดำเนินการแบบต่าง ๆ, การใช้ตัวดำเนินการ
+
+Techotopia. (2016, October 27). _Ruby Operators._ [https://www.techotopia.com/index.php/Ruby\_Operators](https://www.techotopia.com/index.php/Ruby_Operators)
+
+Flanagan, D., & Matsumoto, Y. (2008). _The Ruby programming language_. O'Reilly Media.
+
+GeeksforGeeks. (2024, April 23). _Ruby | Operators_. [https://www.geeksforgeeks.org/ruby/ruby-operators/](https://www.geeksforgeeks.org/ruby/ruby-operators/)
+
+#### การเปรียบเทียบวัตถุ
+
+Castello, J. (2017, March). _How Ruby equality works_. RubyGuides. [https://www.rubyguides.com/2017/03/ruby-equality/](https://www.rubyguides.com/2017/03/ruby-equality/)
+
+#### class ลูกของ Numeric
+
+Ruby Association. _Numeric_. (n.d.). [https://ruby-doc.org/core-2.5.2/Numeric.html](https://ruby-doc.org/core-2.5.2/Numeric.html)
+
+#### การเปรียบเทียบ String โดยใช้ >,>=,<,<=
+
+Andrew. (2014, February 7). _Comparing two strings using > (greater than sign) in Ruby?_ \[Online forum post]. Stack Overflow. [https://stackoverflow.com/questions/21618216/comparing-two-strings-using-greater-than-sign-in-ruby](https://stackoverflow.com/questions/21618216/comparing-two-strings-using-greater-than-sign-in-ruby)
+
+#### Regexp, การใช้ =\~, !\~
+
+Ruby Association. _Regexp._ (n.d.). [https://ruby-doc.org/core-2.5.7/Regexp.html](https://ruby-doc.org/core-2.5.7/Regexp.html)
+
+### C
+
+#### ลักษณะค่าตรรกะ
+
+Bell, J. (n.d.). _Decisions_. University of Illinois Chicago, Department of Computer Science. [https://www.cs.uic.edu/\~jbell/CourseNotes/C\_Programming/Decisions.html](https://www.cs.uic.edu/~jbell/CourseNotes/C_Programming/Decisions.html)
+
+#### Regexp
+
+GeeksforGeeks. (2025, July 12). _Regular expressions in C._ [https://www.geeksforgeeks.org/c/regular-expressions-in-c/](https://www.geeksforgeeks.org/c/regular-expressions-in-c/)
+
+The Open Group. (1997). _regex.h - regular-expression-matching types_. [https://pubs.opengroup.org/onlinepubs/7908799/xsh/regex.h.html](https://pubs.opengroup.org/onlinepubs/7908799/xsh/regex.h.html)
+
+### Python
+
+**การเปรียบเทียบวัตถุ**
+
+McCullum, N. (2020, August 6). _How to compare objects in Python_. [https://www.nickmccullum.com/how-to-compare-objects-python/](https://www.nickmccullum.com/how-to-compare-objects-python/)
+
+#### การเปรียบเทียบ class, การใช้ is, is not
+
+Langen, J. de. (n.d.). _Python != is not is not: Comparing objects in Python_. Real Python. [https://realpython.com/python-is-identity-vs-equality/](https://realpython.com/python-is-identity-vs-equality/)
+
+#### subclass
+
+Python Software Foundation. (n.d.). _Classes_. [https://docs.python.org/3/tutorial/classes.html](https://docs.python.org/3/tutorial/classes.html)
+
+### Java
+
+#### วิธีการใช้ method isAssignableFrom
+
+Oracle. (n.d.). _Class._ [https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html](https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html)
+
+#### การตรวจตอบว่า Object เป็นของ Class ไหน โดยไม่ใช้ instanceof
+
+Addev. (2013, May 22). _Check if an object is an instance of a class (but not an instance of its subclass)_. \[Online forum post]. Stack Overflow. [https://stackoverflow.com/questions/16688655/check-if-an-object-is-an-instance-of-a-class-but-not-an-instance-of-its-subclas](https://stackoverflow.com/questions/16688655/check-if-an-object-is-an-instance-of-a-class-but-not-an-instance-of-its-subclas)
+
