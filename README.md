@@ -41,6 +41,8 @@ false
 
 > Python
 
+ในภาษา Python สามารถเปรียบเทียบได้โดยใช้ `is` ตัวอย่างบรรทัดที่ 9
+
 ```python
 data1 = []
 data2 = []
@@ -75,6 +77,8 @@ This is true.
 ที่ผลลัพธ์บรรทัดที่ 3 เป็น `true` เพราะ `data1` เป็นตัวเดียวกันกับ `data2`
 
 > Java
+
+ภาษา Java สามารถใช้ตัวดำเนินการ == แบบภาษา Ruby ได้เลย
 
 ```java
 class main {
@@ -126,7 +130,7 @@ true
 
 > C
 
-ภาษา C ไม่มี `map`, `Symbol`, `boolean` ดังนั้น
+ภาษา C เราสามารถใช้ตัวดำเนินการ `==` ได้เลย
 
 ```c
 #include <stdio.h>
@@ -179,6 +183,8 @@ int main() {
 
 > Python
 
+ภาษา Python เราสามารถใช้ตัวดำเนินการ `==` ได้เลย
+
 ```python
 print(10 == 10)
 print(5 == 9 / 2.0)
@@ -206,6 +212,8 @@ True
 ```
 
 > Java
+
+ภาษา Java เราสามารถใช้ตัวดำเนินการ `==` ได้เลย
 
 ```java
 import java.util.Arrays;
@@ -279,6 +287,8 @@ true
 
 > Python
 
+ภาษา Python เราสามารถ `is not` ทดแทนได้
+
 ```python
 data1 = []
 data2 = []
@@ -293,6 +303,8 @@ else:
 จะได้ผลลัพธ์เป็น `False`
 
 > Java
+
+ภาษา Java เราสามารถใช้ตัวดำเนินการ !`=` ได้เลย
 
 ```java
 class main {
@@ -340,6 +352,8 @@ false
 
 > C
 
+ภาษา C เราสามารถใช้ตัวดำเนินการ !`=` ได้เลย
+
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -369,6 +383,8 @@ int main() {
 
 > Python
 
+ภาษา Python เราสามารถใช้ตัวดำเนินการ !`=` ได้เลย
+
 ```python
 print(10 != 10)
 print(5 != 9 / 2.0)
@@ -396,6 +412,8 @@ False
 ```
 
 > Java
+
+ภาษา Java เราสามารถใช้ตัวดำเนินการ !`=` ได้เลย
 
 ```java
 import java.util.Arrays;
@@ -488,6 +506,8 @@ true
 
 > Python
 
+ภาษา Python เราสามารถใช้ `method` `issubclass(A, B)` ได้
+
 ```python
 class B:                        # ประกาศ class B
     def do_thing():
@@ -511,6 +531,8 @@ False
 ที่ได้ค่าเป็น `True` ก็เพราะว่า `class` A เป็น `class` ลูก (subclass) ของ B และบรรทัดที่ได้ `False` เพราะ B ไม่ใช่ `class` ลูกของ A แต่เป็น `class` แม่
 
 > Java
+
+ภาษา Java เราสามารถใช้ `method` `isAssignableFrom(class)` ได้ โดยจำเป็นต้องใช้ `A.class`, `B.class` เพื่อให้ได้ตัวแทนของ `class` ออกมาเพื่อที่จะไปเทียบได้
 
 ```java
 class main {
@@ -601,6 +623,8 @@ false
 
 > C
 
+ภาษา C เราสามารถใช้ตัวดำเนินการเปรียบเทียบได้เลย แต่ในการเทียบข้อความ จำเป็นต้องใช้ `strcmp(char *string)` และในการเทียบเวลา จำเป็นต้องใช้ `difftime(x, y)`
+
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -661,6 +685,8 @@ int main() {
 
 > Python
 
+ภาษา Python เราสามารถใช้ตัวดำเนินการเปรียบเทียบได้แบบภาษา Ruby ได้เลย
+
 ```python
 import datetime
 
@@ -701,6 +727,8 @@ False
 ```
 
 > Java
+
+ภาษา Java เราสามารถใช้ตัวดำเนินการเทียบได้เลย แต่ในการเทียบข้อความ จำเป็นต้องใช้ `method` `compareTo` และในการเทียบเวลา จำเป็นต้องใช้ `method` `isBefore`
 
 ```java
 import java.time.LocalDate;
@@ -801,6 +829,8 @@ puts :zulu <=> :yankee
 
 > C
 
+ภาษา C ไม่มี `spaceship operator` แต่เราสามารถ `function` ทำขึ้นมาให้คืนค่าให้มีคุณสมบัติคล้าย ๆ กับ `spaceship operator` ได้ หรือจะใช้ตัวดำเนินการขึ้นทดแทน อย่างเช่น  >,== ได้
+
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -871,6 +901,8 @@ int main() {
 
 > Python
 
+ภาษา Python ไม่มี `spaceship operator` แต่เราสามารถ `function` ทำขึ้นมาให้คืนค่าให้มีคุณสมบัติคล้าย ๆ กับ `spaceship operator` ได้ หรือจะใช้ตัวดำเนินการขึ้นทดแทน อย่างเช่น  >,== ได้
+
 ```python
 import datetime
 
@@ -921,6 +953,8 @@ print(spaceship_compare("zulu", "yankee"))
 ```
 
 > Java
+
+ภาษา Java ไม่มี `spaceship operator` แต่มี `method` `compare` ที่มีคุณสมบัติคล้าย ๆ กัน
 
 ```java
 import java.time.LocalDate;
@@ -991,6 +1025,8 @@ true
 
 > C
 
+ภาษา C ไม่สามารถทำแบบนี้ได้ จำเป็นต้องแปลงให้เงื่อนไขมากกว่า น้อยกว่า และเชื่อมเงื่อนไขทั้งสองด้วย "และ (`&&`)" เอา
+
 ```c
 #include <stdio.h>
 
@@ -1012,6 +1048,8 @@ int main() {
 
 > Python
 
+ภาษา Python สามารถใช้โดยให้ค่าที่เอาจะตรวจสอบ อยู่ระหว่างกลางช่วงค่าที่จะตรวจสอบ ซึ่งระหว่างค่าที่จะตรวจสอบและช่วงค่าที่จะตรวจสอบ จำเป็นต้องเชื่อมด้วยเงื่อนไข
+
 ```python
 print(1 <= 5 <= 10)
 print(1 <= 15 <= 10)
@@ -1027,6 +1065,8 @@ True
 ```
 
 > Java
+
+ภาษา Java ไม่สามารถทำแบบนี้ได้ จำเป็นต้องแปลงให้เงื่อนไขมากกว่า น้อยกว่า และเชื่อมเงื่อนไขทั้งสองด้วย "และ (`&&`)" เอา
 
 ```java
 public class ComparisonChecks {
@@ -1069,6 +1109,8 @@ false
 
 > Python
 
+ภาษา Python สามารถตรวจสอบโดยใช้ `function`/`method` `isinstance` ได้
+
 ```python
 import numbers
 
@@ -1087,15 +1129,17 @@ False
 
 > Java
 
-<pre class="language-java"><code class="lang-java">public class ComparisonChecks {
+ภาษา Java ไม่สามารถใช้ `instanceof` โดยตรงได้ถ้า `Object` ที่เอามาตรวจสอบไม่ใช่ลูกของ `Class` นั้นเพราะจะทำให้เกิด `Exception` ดังนั้นจึงตรวจสอบโดยเอา `Class` มาเปรียบเทียบกันแทน
+
+```java
+public class ComparisonChecks {
 	public static void main(String[] args) {
 		System.out.println("hello" instanceof String);
-		# 
 		System.out.println(Double.valueOf(123.45).getClass().equals(Double.class));
 		System.out.println(Double.valueOf(123.45).getClass().equals(Float.class));
 	}
-<strong>}
-</strong></code></pre>
+}
+```
 
 จะได้ผลลัพธ์เป็น
 
@@ -1124,6 +1168,8 @@ false
 #### เทียบกับภาษาอื่น ๆ&#x20;
 
 > C
+
+ภาษา C ไม่มีตัวดำเนินการของ `regex` โดยเฉพาะ จึงต้องนำเข้า `library` `regex` มาใช้งานแทน
 
 ```c
 #include <stdio.h>
@@ -1161,6 +1207,8 @@ int main() {
 
 > Python
 
+ภาษา Python ไม่มีตัวดำเนินการของ `regex` โดยเฉพาะ จึงต้องนำเข้า `re` มาเพื่อใช้งานแทน
+
 ```python
 import re
 
@@ -1178,6 +1226,8 @@ False
 ```
 
 > Java
+
+ภาษา Java ไม่มีตัวดำเนินการของ `regex` โดยเฉพาะ จึงต้องนำเข้า `Class` `Pattern` ของ `regex` มาเพื่อใช้งานแทน
 
 ```java
 import java.util.regex.Pattern;
@@ -1219,6 +1269,8 @@ true
 
 > C
 
+ภาษา C สามารถทดแทนด้วยการใช้ `==` กับ `strcmp`
+
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -1239,6 +1291,8 @@ int main() {
 
 > Python
 
+ภาษา Python สามารถทดแทนด้วยการใช้ `==`
+
 ```python
 print(42 == 42)
 print("abc" == "abc")
@@ -1252,6 +1306,8 @@ True
 ```
 
 > Java
+
+ภาษา Java สามารถทดแทนด้วยการใช้ `==` กับ  `method` `equals`
 
 ```java
 public class ComparisonChecks {
@@ -1291,66 +1347,66 @@ false
 
 > C
 
+ภาษา C ไม่มีตัวดำเนินการของ `regex` โดยเฉพาะ จึงต้องนำเข้า `library` `regex` มาใช้งานแทน
+
 ```c
 #include <stdio.h>
 #include <regex.h>
 
-void find_and_print_index(const char* text, const char* pattern) {
+int regex_index(const char* text, const char* pattern) {
 	regex_t regex;
-	regmatch_t pmatch[1];
-	int reti;
-
-	reti = regcomp(&regex, pattern, 0);
-	if (reti) {
+        regmatch_t pmatch;
+	if (regcomp(&regex, pattern, 0)) {
 		fprintf(stderr, "Could not compile regex\n");
-		return;
+		return -1;
 	}
 
-	reti = regexec(&regex, text, 1, pmatch, 0);
-	if (!reti) {
-		// Print the starting offset of the match
-		printf("%lld\n", pmatch[0].rm_so);
-	} else if (reti == REG_NOMATCH) {
-		// -1 to represent nil/not found
-		printf("-1\n");
+	// ทำ regex
+        int status = regexec(&regex, text, 1, &pmatch, 0);
+
+        if (status == 0) {
+		regfree(&regex);
+		return pmatch.rm_so;
+        } else if (status == REG_NOMATCH) {
+		regfree(&regex);
+		return -1;
 	} else {
 		char msgbuf[100];
-		regerror(reti, &regex, msgbuf, sizeof(msgbuf));
+		regerror(status, &regex, msgbuf, sizeof(msgbuf));
 		fprintf(stderr, "Regex match failed: %s\n", msgbuf);
+		regfree(&regex);
 	}
-	regfree(&regex);
 }
 
-void check_and_print_no_match(const char* text, const char* pattern) {
+int regex_find(const char* text, const char* pattern) {
 	regex_t regex;
 	int reti;
 
 	reti = regcomp(&regex, pattern, 0);
 	if (reti) {
 		fprintf(stderr, "Could not compile regex\n");
-		return;
+		return -1;
 	}
 
-	reti = regexec(&regex, text, 0, NULL, 0);
+        reti = regexec(&regex, text, 0, NULL, 0);
+
+        regfree(&regex);
+	
 	if (reti == REG_NOMATCH) {
-		// Match not found, which is true for the !~ operator
-		printf("1\n");
+		return 0;
 	} else {
-		// Match found, which is false for the !~ operator
-		printf("0\n");
+		return 1;
 	}
-	regfree(&regex);
 }
 
 
 int main() {
 	const char* text = "haystack";
 	const char* pattern = "hay";
-    
-	find_and_print_index(text, pattern);
-    
-	check_and_print_no_match(text, pattern);
-
+        int found_idx = regex_index(text, pattern);
+        int is_found = regex_find(text, pattern);
+        printf("%d\n", found_idx);
+	printf("%d\n", is_found);
 	return 0;
 }
 ```
@@ -1359,10 +1415,12 @@ int main() {
 
 ```
 0
-0
+1
 ```
 
 > Python
+
+ภาษา Python ไม่มีตัวดำเนินการของ `regex` โดยเฉพาะ จึงต้องนำเข้า `re` มาเพื่อใช้งานแทน
 
 ```python
 import re
@@ -1387,6 +1445,8 @@ False
 ```
 
 > Java
+
+ภาษา Java ไม่มีตัวดำเนินการของ `regex` โดยเฉพาะ จึงต้องนำเข้า `Class` `Pattern` ของ `regex` มาเพื่อใช้งานแทน
 
 ```java
 import java.util.regex.Matcher;
